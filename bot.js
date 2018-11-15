@@ -1,15 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const token = process.env.token;
 
 client.on('ready', () => {
-    console.log('I am ready!');
+    console.log('I am ready to ban!');
 });
 
 client.on('message', message => {
-    if (message.content === 'ping') {
-    	message.reply('pong');
-  	}
+    if (message.content === 'ping') message.reply('pong');
 });
-
-// THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+client.login(token).catch(err => console.log(err));;
